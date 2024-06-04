@@ -16,11 +16,9 @@ class Result
 {
     public static string pangrams(string s)
     {
-
         s = s.ToLower();
         for (int i = 0; i < 26; i++)
         {
-
             char c = Convert.ToChar(i + 97);
 
             if (!s.Contains(c))
@@ -30,15 +28,21 @@ class Result
         }
         return "pangram";
     }
-
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
         string s = Console.ReadLine();
 
         string result = Result.pangrams(s);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
     }
 }
